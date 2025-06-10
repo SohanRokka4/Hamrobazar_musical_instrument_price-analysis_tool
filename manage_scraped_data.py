@@ -37,26 +37,27 @@ class data_cleaner:
 
     def remove_duplicates(self) -> int:
         """
-        Remove duplicate rows from the CSV data.
-                            
+        Remove rows where all columns (except the specified ones) are identical.
+    
+        Args:
+            none
+    
         Returns:
-            int: Number of duplicate rows removed
+            Number of duplicate rows removed.
         """
 
-        consider_column = self.headers
-        seen = set()
         unique_data = []
+        seen = set()  # Track unique combinations
         duplicates_removed = 0
         for row in self.data:
-            # Create a tuple of the values for the considered columns
-            key = tuple(row[col] for col in consider_column)
-            
+    # Create a unique key from selected columns
+            key = (row['name'], row['price'], row['condition'], row['seller'])
+    
             if key not in seen:
                 seen.add(key)
                 unique_data.append(row)
             else:
                 duplicates_removed += 1
-                
         self.data = unique_data
         return duplicates_removed
     
@@ -111,7 +112,7 @@ class data_cleaner:
 def main():
     editor = data_cleaner()
     editor.load_data()
-    editor.remove_duplicates()
+    print(f"no of duplicates removed = {editor.remove_duplicates()}")
     editor.clean_and_format_data()
     editor.save_data()
         
