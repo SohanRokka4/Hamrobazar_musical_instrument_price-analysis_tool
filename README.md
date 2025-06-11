@@ -8,12 +8,18 @@ i would like to present all the data i have found through a dashboard
 
 #Todo list
 -scrape data  \done
+
 -organise data
--EDA
+
+-EDA(explorotary data analysis)
+
 -answer questions :
     in which locations better deals may be found
+
     in which price category better deals may be found
+
     which category of guitars may be listed longer
+    
     which category of guitars are listed for shorter amt of time
 
 -present all the findings through a dashboard
